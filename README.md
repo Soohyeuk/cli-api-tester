@@ -11,6 +11,22 @@ A simple CLI tool written in Go for testing HTTP APIs. This project allows you t
 
 ## Installation
 
+### Method 1: Direct Install (Recommended)
+```bash
+# Install the binary
+go install github.com/Soohyeuk/cli-api-tester/cmd@latest
+
+# Add to PATH (if not already added)
+# For bash/zsh:
+echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> ~/.bashrc  # or ~/.zshrc
+source ~/.bashrc  # or source ~/.zshrc
+
+# For tcsh:
+echo 'setenv PATH ${PATH}:$(go env GOPATH)/bin' >> ~/.tcshrc
+source ~/.tcshrc
+```
+
+### Method 2: Manual Build
 ```bash
 # Clone the repository
 git clone https://github.com/Soohyeuk/cli-api-tester.git
@@ -19,8 +35,7 @@ cd cli-api-tester
 # Build and install the binary
 go build -o $(go env GOPATH)/bin/httpi ./cmd
 
-# Add to PATH (if not already added)
-export PATH=$PATH:$(go env GOPATH)/bin
+# Add to PATH (same as Method 1)
 ```
 
 ## Usage
