@@ -25,6 +25,10 @@ func main() {
 	magenta := color.New(color.FgMagenta).SprintFunc()
 
 	if len(os.Args) < 2 {
+		fmt.Println(magenta(` _  _ _____ _____ ___ _ `))
+		fmt.Println(magenta(`| || |_   _|_   _| _,\ |`))
+		fmt.Println(magenta(`| >< | | |   | | | v_/ |`))
+		fmt.Println(magenta(`|_||_| |_|   |_| |_| |_|`))
 		fmt.Printf("Hi, I'm %s, a simple CLI tool for testing HTTP APIs. Try '%s --help' or '%s -h' for more information.\n",
 			cyan("httpi"), cyan("httpi"), cyan("httpi"))
 		os.Exit(1)
