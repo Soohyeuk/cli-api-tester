@@ -1,6 +1,6 @@
 # httpi
 
-A simple CLI tool written in Go for testing HTTP APIs. This project allows you to easily make GET and POST requests from the command line.
+A simple CLI tool written in Go for testing HTTP APIs. This project allows you to easily make GET, POST, PUT, and DELETE requests from the command line.
 
 ## Features
 
