@@ -14,12 +14,12 @@ A simple CLI tool written in Go for testing HTTP APIs. This project allows you t
 ### Quick Install (Recommended)
 ```bash
 # Download and run the installation script
-curl -fsSL https://raw.githubusercontent.com/soohyeuk/cli-api-tester/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Soohyeuk/cli-api-tester/main/install.sh | bash
 ```
 
 Or if you prefer to clone the repository first:
 ```bash
-git clone https://github.com/soohyeuk/cli-api-tester.git
+git clone https://github.com/Soohyeuk/cli-api-tester.git
 cd cli-api-tester
 ./install.sh
 ```
@@ -33,7 +33,7 @@ The script will:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/soohyeuk/cli-api-tester.git
+git clone https://github.com/Soohyeuk/cli-api-tester.git
 cd cli-api-tester
 ```
 

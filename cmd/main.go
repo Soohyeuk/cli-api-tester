@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/soohyeuk/cli-api-tester/internal/client"
-	"github.com/soohyeuk/cli-api-tester/internal/config"
+	"github.com/Soohyeuk/cli-api-tester/internal/client"
+	"github.com/Soohyeuk/cli-api-tester/internal/config"
 )
 
 // main is the entry point of the application
