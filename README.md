@@ -14,7 +14,7 @@ A simple CLI tool written in Go for testing HTTP APIs. This project allows you t
 ### Method 1: Direct Install (Recommended)
 ```bash
 # Install the binary
-go install github.com/Soohyeuk/cli-api-tester/cmd@latest
+go install github.com/Soohyeuk/cli-api-tester/cmd/httpi@latest
 
 # Add to PATH (if not already added)
 # For bash/zsh:
@@ -33,12 +33,10 @@ git clone https://github.com/Soohyeuk/cli-api-tester.git
 cd cli-api-tester
 
 # Build and install the binary
-go build -o $(go env GOPATH)/bin/httpi ./cmd
+go build -o $(go env GOPATH)/bin/httpi ./cmd/httpi
 
 # Add to PATH (same as Method 1)
-```
-
-## Usage
+```## Usage
 
 Basic syntax:
 ```bash
@@ -106,7 +104,8 @@ httpi DELETE http://localhost:8080/test
 ```
 .
 ├── cmd/
-│   └── main.go          # CLI entry point
+│   └── httpi
+│       └── main.go          # CLI entry point
 ├── internal/
 │   └── client/
 │       ├── client.go    # HTTP client implementation
@@ -119,3 +118,6 @@ httpi DELETE http://localhost:8080/test
 ## Contributing
 
 Feel free to submit issues and enhancement requests! 
+
+
+
