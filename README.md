@@ -32,8 +32,8 @@ source ~/.tcshrc
 git clone https://github.com/Soohyeuk/cli-api-tester.git
 cd cli-api-tester
 
-# Build and install the binary
-go build -o $(go env GOPATH)/bin/httpi ./cmd/httpi
+# Build and install the binary with version information
+go build -ldflags="-X github.com/Soohyeuk/cli-api-tester/internal/version.Version=$(git describe --tags --always)" -o $(go env GOPATH)/bin/httpi ./cmd/httpi
 
 # Add to PATH (same as Method 1)
 ```## Usage
