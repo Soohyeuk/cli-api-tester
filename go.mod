@@ -1,3 +1,3 @@
 module github.com/soohyeuk/cli-api-tester
 
-go 1.21
+go 1.24.1

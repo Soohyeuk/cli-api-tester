@@ -1,3 +1,4 @@
+// Package httpi is a simple CLI tool for testing HTTP APIs
 package main
 
 import (
@@ -14,7 +15,7 @@ import (
 // It parses command line flags and routes to appropriate handlers
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: api <method> <url> [headers] [body]")
+		fmt.Println("Usage: httpi <method> <url> [headers] [body]")
 		os.Exit(1)
 	}
 
