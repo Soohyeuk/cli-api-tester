@@ -7,9 +7,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/client"
-	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/config"
-	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/version"
+	"github.com/Soohyeuk/cli-api-tester/internal/client"
+	"github.com/Soohyeuk/cli-api-tester/internal/config"
+	"github.com/Soohyeuk/cli-api-tester/internal/version"
 )
 
 // main is the entry point of the application
@@ -32,6 +32,11 @@ func main() {
 	if len(os.Args) == 2 && (os.Args[1] == "--version" || os.Args[1] == "-v") {
 		fmt.Println("httpi version", version.Version)
 		os.Exit(0)
+	}
+
+	if len(os.Args) < 3 {
+		fmt.Println("Usage: httpi <method> <url> [headers] [body]")
+		os.Exit(1)
 	}
 
 	method := os.Args[1]
