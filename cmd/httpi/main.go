@@ -10,33 +10,43 @@ import (
 	"github.com/Soohyeuk/cli-api-tester/internal/client"
 	"github.com/Soohyeuk/cli-api-tester/internal/config"
 	"github.com/Soohyeuk/cli-api-tester/internal/version"
+	"github.com/fatih/color"
 )
 
 // main is the entry point of the application
 // It parses command line flags and routes to appropriate handlers
 func main() {
+	// Create color objects
+	cyan := color.New(color.FgCyan).SprintFunc()
+	green := color.New(color.FgGreen).SprintFunc()
+	yellow := color.New(color.FgYellow).SprintFunc()
+	red := color.New(color.FgRed).SprintFunc()
+	blue := color.New(color.FgBlue).SprintFunc()
+	magenta := color.New(color.FgMagenta).SprintFunc()
+
 	if len(os.Args) < 2 {
-		fmt.Println("Hi, I'm httpi, a simple CLI tool for testing HTTP APIs. Try 'httpi --help' or 'httpi -h' for more information.")
+		fmt.Printf("Hi, I'm %s, a simple CLI tool for testing HTTP APIs. Try '%s --help' or '%s -h' for more information.\n",
+			cyan("httpi"), cyan("httpi"), cyan("httpi"))
 		os.Exit(1)
 	}
 
-	switch os.Args[1] {
-	case "--help", "-h":
-		fmt.Println("Usage: httpi <method> <url> [headers] [body]")
-		fmt.Println("Methods Allowed: GET, POST, PUT, DELETE")
-		fmt.Println("Headers should be in the format 'Header1: value1, Header2: value2'")
-		fmt.Println("Body should be in the format 'key1=value1&key2=value2' for GET and POST requests")
-		fmt.Println("Body should be in the format '{\"key1\": \"value1\", \"key2\": \"value2\"}' for PUT and DELETE requests")
-		os.Exit(0)
-
-	case "--version", "-v":
-		fmt.Println("httpi version", version.Version)
+	// Check for help flag
+	if os.Args[1] == "--help" || os.Args[1] == "-h" {
+		fmt.Printf("Usage: %s <method> <url> [headers] [body]\n", cyan("httpi"))
+		fmt.Printf("Methods Allowed: %s, %s, %s, %s\n",
+			green("GET"), green("POST"), green("PUT"), green("DELETE"))
+		fmt.Printf("Headers should be in the format %s\n", yellow("'Header1: value1, Header2: value2'"))
+		fmt.Printf("Body should be in the format %s for GET and POST requests\n",
+			yellow("'key1=value1&key2=value2'"))
+		fmt.Printf("Body should be in the format %s for PUT and DELETE requests\n",
+			yellow("'{\"key1\": \"value1\", \"key2\": \"value2\"}'"))
 		os.Exit(0)
 	}
 
-	if len(os.Args) < 3 {
-		fmt.Println("Usage: httpi <method> <url> [headers] [body]")
-		os.Exit(1)
+	// Check for version flag
+	if os.Args[1] == "--version" || os.Args[1] == "-v" {
+		fmt.Printf("%s version %s\n", cyan("httpi"), blue(version.Version))
+		os.Exit(0)
 	}
 
 	method := os.Args[1]
@@ -58,6 +68,8 @@ func main() {
 	var resp *http.Response
 	var err error
 
+	fmt.Printf("Sending %s request to %s...\n", magenta(method), cyan(url))
+
 	switch method {
 	case "GET":
 		resp, err = handleGetRequest(httpClient, url, headers)
@@ -68,21 +80,22 @@ func main() {
 	case "DELETE":
 		resp, err = handleDeleteRequest(httpClient, url, headers)
 	default:
-		fmt.Println("Unsupported method:", method)
+		fmt.Printf("%s: Unsupported method %s\n", red("Error"), red(method))
 		os.Exit(1)
 	}
 
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Printf("%s: %s\n", red("Error"), red(err))
 		os.Exit(1)
 	}
 
 	bodyStr, err := client.ReadResponseBody(resp)
 	if err != nil {
-		fmt.Println("Error reading response:", err)
+		fmt.Printf("%s reading response: %s\n", red("Error"), red(err))
 		os.Exit(1)
 	}
-	fmt.Println("Response:", bodyStr)
+
+	fmt.Printf("%s: %s\n", green("Response"), bodyStr)
 }
 
 // parseHeaders converts a string of headers into a map
