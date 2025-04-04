@@ -7,8 +7,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Soohyeuk/cli-api-tester/internal/client"
-	"github.com/Soohyeuk/cli-api-tester/internal/config"
+	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/client"
+	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/config"
+	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/version"
 )
 
 // main is the entry point of the application
@@ -26,6 +27,11 @@ func main() {
 		fmt.Println("Body should be in the format 'key1=value1&key2=value2' for GET and POST requests")
 		fmt.Println("Body should be in the format '{\"key1\": \"value1\", \"key2\": \"value2\"}' for PUT and DELETE requests")
 		os.Exit(1)
+	}
+
+	if len(os.Args) == 2 && (os.Args[1] == "--version" || os.Args[1] == "-v") {
+		fmt.Println("httpi version", version.Version)
+		os.Exit(0)
 	}
 
 	method := os.Args[1]
