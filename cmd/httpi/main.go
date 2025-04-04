@@ -7,9 +7,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Soohyeuk/cli-api-tester/internal/client"
-	"github.com/Soohyeuk/cli-api-tester/internal/config"
-	"github.com/Soohyeuk/cli-api-tester/internal/version"
+	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/client"
+	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/config"
+	"github.com/Soohyeuk/cli-api-tester/cmd/httpi/internal/version"
 )
 
 // main is the entry point of the application
