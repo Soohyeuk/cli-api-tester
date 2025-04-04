@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/soohyeuk/cli-api-tester/internal/config"
+	"github.com/Soohyeuk/cli-api-tester/internal/config"
 )
 
 // HTTPClient represents a configured HTTP client
