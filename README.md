@@ -4,9 +4,9 @@ A simple CLI tool written in Go for testing HTTP APIs. This project allows you t
 
 ## Features
 
-- Make GET and POST requests
+- Make GET, POST, PUT, and DELETE requests
 - Custom headers support
-- JSON body support for POST requests
+- JSON body support for POST and PUT requests
 - Simple and intuitive command-line interface
 
 ## Installation
@@ -62,6 +62,21 @@ httpi GET https://api.example.com "Authorization: Bearer token,Content-Type: app
 httpi POST https://api.example.com "Content-Type: application/json" '{"key": "value"}'
 ```
 
+4. PUT request with JSON body:
+```bash
+httpi PUT https://api.example.com "Content-Type: application/json" '{"user": {"name": "John", "age": 30}}'
+```
+
+5. DELETE request:
+```bash
+httpi DELETE https://api.example.com
+```
+
+6. DELETE request with custom headers:
+```bash
+httpi DELETE https://api.example.com "Authorization: Bearer token"
+```
+
 ### Testing with Local Server
 
 The project includes a simple Flask server for testing. To use it:
@@ -78,6 +93,12 @@ httpi GET http://localhost:8080
 
 # POST request
 httpi POST http://localhost:8080/test "Content-Type: application/json" '{"message": "Hello"}'
+
+# PUT request
+httpi PUT http://localhost:8080/test "Content-Type: application/json" '{"message": "Updated"}'
+
+# DELETE request
+httpi DELETE http://localhost:8080/test
 ```
 
 ## Project Structure

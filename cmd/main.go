@@ -43,6 +43,10 @@ func main() {
 		resp, err = handleGetRequest(httpClient, url, headers)
 	case "POST":
 		resp, err = handlePostRequest(httpClient, url, headers, body)
+	case "PUT":
+		resp, err = handlePutRequest(httpClient, url, headers, body)
+	case "DELETE":
+		resp, err = handleDeleteRequest(httpClient, url, headers)
 	default:
 		fmt.Println("Unsupported method:", method)
 		os.Exit(1)
@@ -106,6 +110,39 @@ func handleGetRequest(client *client.HTTPClient, url string, headers map[string]
 // - error: Any error that occurred during the request
 func handlePostRequest(client *client.HTTPClient, url string, headers map[string]string, body string) (*http.Response, error) {
 	req, err := client.CreatePostRequest(url, headers, body)
+	if err != nil {
+		return nil, err
+	}
+	return client.SendRequest(req)
+}
+
+// handlePutRequest processes PUT requests
+// Parameters:
+// - client: *client.HTTPClient - The configured HTTP client
+// - url: string - The URL to send PUT request to
+// - headers: map[string]string - Optional headers to include
+// - body: string - The request body
+// Returns:
+// - *http.Response: The response from the server
+// - error: Any error that occurred during the request
+func handlePutRequest(client *client.HTTPClient, url string, headers map[string]string, body string) (*http.Response, error) {
+	req, err := client.CreatePutRequest(url, headers, body)
+	if err != nil {
+		return nil, err
+	}
+	return client.SendRequest(req)
+}
+
+// handleDeleteRequest processes DELETE requests
+// Parameters:
+// - client: *client.HTTPClient - The configured HTTP client
+// - url: string - The URL to send DELETE request to
+// - headers: map[string]string - Optional headers to include
+// Returns:
+// - *http.Response: The response from the server
+// - error: Any error that occurred during the request
+func handleDeleteRequest(client *client.HTTPClient, url string, headers map[string]string) (*http.Response, error) {
+	req, err := client.CreateDeleteRequest(url, headers)
 	if err != nil {
 		return nil, err
 	}

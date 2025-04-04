@@ -49,6 +49,49 @@ func (c *HTTPClient) CreatePostRequest(url string, headers map[string]string, bo
 	return req, nil
 }
 
+// CreatePutRequest creates a new PUT request
+// Parameters:
+// - url: string - The URL to send PUT request to
+// - headers: map[string]string - Optional headers to include
+// - body: string - The request body
+// Returns:
+// - *http.Request: The created PUT request
+// - error: Any error that occurred during request creation
+func (c *HTTPClient) CreatePutRequest(url string, headers map[string]string, body string) (*http.Request, error) {
+	req, err := http.NewRequest("PUT", url, bytes.NewBuffer([]byte(body)))
+	if err != nil {
+		return nil, err
+	}
+
+	// Set headers if provided
+	for key, value := range headers {
+		req.Header.Set(key, value)
+	}
+
+	return req, nil
+}
+
+// CreateDeleteRequest creates a new DELETE request
+// Parameters:
+// - url: string - The URL to send DELETE request to
+// - headers: map[string]string - Optional headers to include
+// Returns:
+// - *http.Request: The created DELETE request
+// - error: Any error that occurred during request creation
+func (c *HTTPClient) CreateDeleteRequest(url string, headers map[string]string) (*http.Request, error) {
+	req, err := http.NewRequest("DELETE", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	// Set headers if provided
+	for key, value := range headers {
+		req.Header.Set(key, value)
+	}
+
+	return req, nil
+}
+
 // ReadResponseBody reads and returns the response body
 // Parameters:
 // - resp: *http.Response - The response to read body from
