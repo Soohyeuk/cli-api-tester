@@ -54,7 +54,6 @@ httpi GET https://api.example.com
 ```bash
 httpi GET https://api.example.com "Authorization: Bearer token,Content-Type: application/json"
 ```
-
 3. POST request with JSON body:
 ```bash
 httpi POST https://api.example.com "Content-Type: application/json" '{"key": "value"}'
@@ -118,6 +117,7 @@ httpi DELETE http://localhost:8080/test
 ## Contributing
 
 Feel free to submit issues and enhancement requests! 
+
 
 
 
