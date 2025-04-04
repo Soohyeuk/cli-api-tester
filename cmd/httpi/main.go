@@ -20,16 +20,16 @@ func main() {
 		os.Exit(1)
 	}
 
-	if len(os.Args) == 2 && (os.Args[1] == "--help" || os.Args[1] == "-h") {
+	switch os.Args[1] {
+	case "--help", "-h":
 		fmt.Println("Usage: httpi <method> <url> [headers] [body]")
 		fmt.Println("Methods Allowed: GET, POST, PUT, DELETE")
 		fmt.Println("Headers should be in the format 'Header1: value1, Header2: value2'")
 		fmt.Println("Body should be in the format 'key1=value1&key2=value2' for GET and POST requests")
 		fmt.Println("Body should be in the format '{\"key1\": \"value1\", \"key2\": \"value2\"}' for PUT and DELETE requests")
-		os.Exit(1)
-	}
+		os.Exit(0)
 
-	if len(os.Args) == 2 && (os.Args[1] == "--version" || os.Args[1] == "-v") {
+	case "--version", "-v":
 		fmt.Println("httpi version", version.Version)
 		os.Exit(0)
 	}
